@@ -15,3 +15,24 @@ function decimalToBinary(decNumber) {
   }
   return binaryString;
 }
+
+// 其他进制转10进制
+function baseConverter(decNumber, base) {
+    const remStack = [];
+    const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let number = decNumber;
+    let rem;
+    let baseString = '';
+    if (!(base >= 2 && base <= 36)) {
+      return '';
+    }
+    while (number > 0) {
+      rem = Math.floor(number % base);
+      remStack.push(rem);
+      number = Math.floor(number / base);
+    }
+    while (remStack.length) {
+      baseString += digits[remStack.pop()];
+    }
+    return baseString;
+  }
